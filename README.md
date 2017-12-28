@@ -1,4 +1,4 @@
-# Deadlocks-Synchronization-Threads-in-Linux in C
+# Deadlocks-Synchronization-Mutex-Threads-in-Linux in C
 
 You can find the my homework and solution.
 Cover four concepts :
