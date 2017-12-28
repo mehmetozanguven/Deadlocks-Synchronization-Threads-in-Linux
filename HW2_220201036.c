@@ -38,6 +38,29 @@ pthread_mutex_t mutexForNumbers1 = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t mutexForNumbers2 = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t mutexForResult = PTHREAD_MUTEX_INITIALIZER;
 
+
+int main(int argc, char const *argv[]) {
+  //Before execute anything, check files are empty or not
+  //If it is empty then, exit the program
+  //Otherwise, continue
+  checkFilesEmpty();
+  if(isNumbers1FileEmpty == 1 && isNumbers2FileEmpty == 1)
+  {
+    printf("Resources are empty\n");
+    exit(0);
+  }
+  else
+  {
+    createThreadTypeA();
+    createThreadTypeB();
+    createThreadTypeC();
+    waitForAllThreads();
+    destroyMutexes();
+  }
+  return 0;
+}
+
+
 /*
   After all operation destroy the mutexes
 */
@@ -600,23 +623,3 @@ void *threadC_work(void *data)
 
 }
 
-int main(int argc, char const *argv[]) {
-  //Before execute anything, check files are empty or not
-  //If it is empty then, exit the program
-  //Otherwise, continue
-  checkFilesEmpty();
-  if(isNumbers1FileEmpty == 1 && isNumbers2FileEmpty == 1)
-  {
-    printf("Resources are empty\n");
-    exit(0);
-  }
-  else
-  {
-    createThreadTypeA();
-    createThreadTypeB();
-    createThreadTypeC();
-    waitForAllThreads();
-    destroyMutexes();
-  }
-  return 0;
-}
